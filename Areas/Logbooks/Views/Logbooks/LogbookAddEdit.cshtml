@@ -1,0 +1,49 @@
+﻿@using Expense_Manager.Areas.Logbooks.Models;
+@{
+    ViewData["Title"] = "Logbook Form";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model LogbookModel
+
+<section class="section">
+    <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Enter the details of Logbook :</h5>
+
+                <form method="post" asp-area="Logbooks" asp-controller="Logbooks" asp-action="Save">
+                    @Html.HiddenFor(x=>x.Logbook_Id)
+                    <div class="row mb-3">
+                        <label for="Logbook_Name" class="col-sm-2 col-form-label">Enter Logbook Name :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" asp-for="Logbook_Name">
+                        </div>
+                    </div>
+
+                        <div class="row mb-3">
+                            <label for="Current_Balance" class="col-sm-2 col-form-label">Current Balance :</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" asp-for="Current_Balance">
+                            </div>
+                        </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-sm-10">
+                        <input type="submit" class="btn btn-primary"></input>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-10">
+                            <a class="btn btn-danger" asp-area="Logbooks" asp-controller="Logbooks" asp-action="Index" value="Cancel" class="btn btn-danger">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+
+
+        </div>
+    </div>
+    </div>
+</section>

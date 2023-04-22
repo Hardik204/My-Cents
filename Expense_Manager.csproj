@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Analysis\Data\" />
+    <Folder Include="Areas\Expenditure\Data\" />
+    <Folder Include="Areas\Income\Data\" />
+    <Folder Include="Areas\Logbooks\Data\" />
+    <Folder Include="Areas\Logs\Data\" />
+    <Folder Include="Areas\Payments\Data\" />
+    <Folder Include="Areas\SEC_User\Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EnterpriseLibrary.Data.NetCore" Version="6.3.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+  </ItemGroup>
+
+</Project>

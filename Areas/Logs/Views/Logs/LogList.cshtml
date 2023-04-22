@@ -1,0 +1,40 @@
+﻿@using System.Data;
+@{
+    ViewData["Title"] = "Log Books";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<form class="float-end" asp-area="Logs" asp-controller="Logs" asp-action="Add">
+    <input class="btn btn-success" type="submit" value="Insert" />
+</form>
+
+<a class="btn btn-primary" asp-area="Analysis" asp-controller="Analysis" asp-route-Logbook_Id="@Convert.ToInt32(ViewData["Logbook_Id"].ToString())" asp-action="Index">Daily Expense</a>
+<a class="btn btn-primary" asp-area="Analysis" asp-controller="Analysis" asp-route-Logbook_Id="@Convert.ToInt32(ViewData["Logbook_Id"].ToString())" asp-action="MonthlyExpensePage">Monthly Expense</a>
+<a class="btn btn-primary" asp-area="Analysis" asp-controller="Analysis" asp-route-Logbook_Id="@Convert.ToInt32(ViewData["Logbook_Id"].ToString())" asp-action="YearlyExpensePage">Yearly Expense</a>
+
+<section>
+    <div style="padding-top:50px"></div>
+    @foreach (DataRow dr in Model.Rows)
+    {
+        <div class="card mb-5 w-85">
+            <div class="card-body">
+
+                <div class="btn-group float-end">
+                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item text-danger" asp-area="Logs" asp-controller="Logs" asp-action="Delete" asp-route-Log_Id="@Convert.ToInt32(dr["Log_Id"].ToString())">Delete</a>
+                        <a class="dropdown-item text-primary" asp-area="Logs" asp-controller="Logs" asp-action="Add" asp-route-Log_Id="@Convert.ToInt32(dr["Log_Id"].ToString())">Update</a>
+                    </div>
+                </div>
+
+                <h5 class="card-title">@dr["Log_Name"]</h5>
+                <br>
+                <h5 class="card-title float-end"><b>Amount : </b>@dr["Amount"]</h5>
+                <p class="card-text"><b>Expense Date : </b>@Convert.ToDateTime(dr["Expense_Date"]).ToString("dd/MM/yyyy")</p>
+                <small>@dr["Description"]</small>
+            </div>
+        </div>
+    }
+</section>

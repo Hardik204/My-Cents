@@ -1,0 +1,35 @@
+﻿@using System.Data;
+@{
+    ViewData["Title"] = "LogBooks";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<form class="float-end" asp-area="Logbooks" asp-controller="Logbooks" asp-action="Add">
+    <input class="btn btn-success" type="submit" value="Insert" />
+</form>
+
+<div style="padding-top:50px"></div>
+
+
+@foreach (DataRow dr in Model.Rows)
+{
+    <div class="card mb-5 mx-auto">
+        <div class="card-body">
+
+            <div class="btn-group float-end">
+                <button type="button" class="btn btn-secondary btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item text-danger" asp-area="Logbooks" asp-controller="Logbooks" asp-action="Delete" asp-route-Logbook_Id="@Convert.ToInt32(dr["Logbook_Id"].ToString())">Delete</a>
+                    <a class="dropdown-item text-primary" asp-area="Logbooks" asp-controller="Logbooks" asp-action="Add" asp-route-Logbook_Id="@Convert.ToInt32(dr["Logbook_Id"].ToString())">Update</a>
+                </div>
+            </div>
+
+            <h5 class="card-title">@dr["Logbook_Name"]</h5>
+            <p class="card-text">Current Balance : @dr["Current_Balance"]</p>
+        </div>
+        <div class="card-footer text-center">
+            <small class="text-muted"><a class="text-muted" asp-area="Logs" asp-controller="Logs" asp-action="Index" asp-route-Logbook_Id="@Convert.ToInt32(dr["Logbook_Id"].ToString())">Open Logbook -></a></small>
+        </div>
+    </div>
+}

@@ -1,0 +1,204 @@
+﻿@using Expense_Manager.Areas.SEC_User.Models
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+@model SEC_UserModel
+
+<meta name="author" content="AdminKit">
+<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="shortcut icon" href="~/AdminLayout/img/icons/icon-48x48.png" />
+
+<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
+
+<link href="~/AdminLayout/css/app.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<main class="d-flex w-100">
+	<div class="mb-2" style="position:relative;left:30px;top:30px">
+		<a class="btn btn-secondary" style="padding:10px" asp-controller="Home" asp-action="Index"><i class="align-middle" data-feather="home"></i></a>
+	</div>
+	<div class="container d-flex flex-column">
+		<div class="row vh-100">
+			<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+				<div class="d-table-cell align-middle">
+
+					<div class="text-center mt-4">
+						<h1 class="h2">Welcome back, User</h1>
+						<p class="lead">
+							Sign in to your account to continue
+						</p>
+					</div>
+
+					<div class="card">
+						<div class="card-body">
+							<div class="m-sm-4">
+								<div class="text-center">
+									<img src="~/emoji/1.jpg" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />
+								</div>
+								<h4>@ViewData["Error"]</h4>
+								<form asp-area="SEC_User" asp-controller="SEC_User" asp-action="Login" method="post">
+									<div class="mb-3">
+										<label class="form-label">Username</label>
+										<input asp-for="Username" type="text" name="Username" class="form-control form-control-lg" placeholder="Enter your Username" />
+									</div>
+									<div class="mb-3">
+										<label class="form-label">Password</label>
+										<input asp-for="Password" type="password" name="Password" class="form-control form-control-lg" placeholder="Enter your password" />
+										<small>
+											<a href="index.html">Forgot password?</a>
+										</small>
+									</div>
+									<div>
+										<label class="form-check" style="padding-left:20%">
+											Not a User ? Register yourself here <a asp-area="SEC_User" asp-controller="SEC_User" asp-action="OpenSignUp">Sign Up</a>
+										</label>
+									</div>
+									<div class="text-center mt-3">
+										@*<a href="index.html" class="btn btn-lg btn-primary">Sign in</a>*@
+										<button type="submit" class="btn btn-lg btn-primary">Sign in</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<script src="~/AdminLayout/js/app.js"></script>
+
+
+
+
+
+
+@*<div class="form-v8">
+	<div class="page-content">
+		<div class="form-v8-content">
+			<div class="form-left">
+				<img src="~/images/form-v8.jpg" alt="form">
+			</div>
+			<div class="form-right">
+				<div class="tab">
+					<div class="tab-inner">
+						<button class="tablinks" onclick="openCity(event, 'sign-in')" id="defaultOpen">Sign In</button>
+					</div>
+					<div class="tab-inner">
+						<button class="tablinks" onclick="openCity(event, 'sign-up')">Sign Up</button>
+					</div>
+				</div>
+
+				<form asp-area="SEC_User" asp-controller="SEC_User" asp-action="Login" class="form-detail" id="Login" name="Login" method="post">
+					<div class="tabcontent" id="sign-in">
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input asp-for="Username" type="text" name="Username" id="Username" class="input-text" required>
+								<span class="label">Username</span>
+								<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input asp-for="Password" type="password" name="Password" id="Password" class="input-text" required>
+								<span class="label">Password</span>
+								<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row-last">
+							<input type="submit" name="register" class="register" value="Sign In">
+						</div>
+
+						@*Google Sign In Button*@
+
+						@*<div id="g_id_onload"
+							 data-client_id="342133923254-t343lutmngblbf2pigb3bl0dbhvk60sb.apps.googleusercontent.com"
+							 data-context="signin"
+							 data-ux_mode="popup"
+							 data-login_uri="https://localhost:44304/Logbooks/Logbooks/Index"
+							 data-auto_prompt="false">
+						</div>
+
+						<div class="g_id_signin"
+							 data-type="standard"
+							 data-shape="pill"
+							 data-theme="filled_black"
+							 data-text="signin_with"
+							 data-size="large"
+							 data-logo_alignment="left">
+						</div>*@
+
+						@*Google Sign In Button Ends*@
+					@*</div>
+				</form>
+
+				<form method="post" asp-area="SEC_User" asp-controller="SEC_User" asp-action="SignUp" class="form-detail" id="SignUp" name="SignUp" method="post">
+					<div class="tabcontent" id="sign-up">
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input asp-for="First_Name" type="text" name="First_Name" id="First_Name" class="input-text" required>
+								<span class="label">First Name</span>
+								<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input asp-for="Last_Name" type="text" name="Last_Name" id="Last_name" class="input-text" required>
+								<span class="label">Last Name</span>
+								<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input asp-for="Username" type="text" name="Username" id="Username" class="input-text" required>
+								<span class="label">Username</span>
+								<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input asp-for="Email" type="text" name="Email" id="Email" class="input-text" required>
+								<span class="label">E-Mail</span>
+								<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input asp-for="Password" type="password" name="Password" id="Password" class="input-text" required>
+								<span class="label">Password</span>
+								<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row-last">
+							<input type="submit" name="register" class="register" value="Register">
+						</div>
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function openCity(evt, cityName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(cityName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+
+		// Get the element with id="defaultOpen" and click on it
+		document.getElementById("defaultOpen").click();
+	</script>
+</div>*@

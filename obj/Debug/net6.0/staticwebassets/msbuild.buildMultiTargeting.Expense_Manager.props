@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Expense_Manager.props" />
+</Project>

@@ -1,0 +1,73 @@
+﻿@using System.Data;
+@{
+	ViewData["Title"] = "Graphs";
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="col-12 col-lg-6">
+	<div class="card">
+		<div class="card-header">
+			<h5 class="card-title">Bar Chart</h5>
+			<h6 class="card-subtitle text-muted">A bar chart provides a way of showing data values represented as vertical bars.</h6>
+		</div>
+		<div class="card-body">
+			<div class="chart">
+				<canvas id="chartjs-bar"></canvas>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		// Bar chart
+		new Chart(document.getElementById("chartjs-bar"), {
+			type: "bar",
+			data: {
+				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+				datasets: [{
+					label: "Last year",
+					backgroundColor: window.theme.primary,
+					borderColor: window.theme.primary,
+					hoverBackgroundColor: window.theme.primary,
+					hoverBorderColor: window.theme.primary,
+					data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+					barPercentage: .75,
+					categoryPercentage: .5
+				}, {
+					label: "This year",
+					backgroundColor: "#dee2e6",
+					borderColor: "#dee2e6",
+					hoverBackgroundColor: "#dee2e6",
+					hoverBorderColor: "#dee2e6",
+					data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
+					barPercentage: .75,
+					categoryPercentage: .5
+				}]
+			},
+			options: {
+				maintainAspectRatio: false,
+				legend: {
+					display: false
+				},
+				scales: {
+					yAxes: [{
+						gridLines: {
+							display: false
+						},
+						stacked: false,
+						ticks: {
+							stepSize: 20
+						}
+					}],
+					xAxes: [{
+						stacked: false,
+						gridLines: {
+							color: "transparent"
+						}
+					}]
+				}
+			}
+		});
+	});
+</script>

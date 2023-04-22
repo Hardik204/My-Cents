@@ -1,0 +1,141 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Expense_Manager
+build_property.RootNamespace = Expense_Manager
+build_property.ProjectDir = C:\Users\hardi\source\repos\Expense_Manager\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\hardi\source\repos\Expense_Manager
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Analysis/Views/Analysis/DailyExpense.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQW5hbHlzaXNcVmlld3NcQW5hbHlzaXNcRGFpbHlFeHBlbnNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Analysis/Views/Analysis/MonthlyExpense.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQW5hbHlzaXNcVmlld3NcQW5hbHlzaXNcTW9udGhseUV4cGVuc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Analysis/Views/Analysis/YearlyExpense.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQW5hbHlzaXNcVmlld3NcQW5hbHlzaXNcWWVhcmx5RXhwZW5zZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Analysis/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQW5hbHlzaXNcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Expenditure/Views/Expenditure/ExpenditureAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRXhwZW5kaXR1cmVcVmlld3NcRXhwZW5kaXR1cmVcRXhwZW5kaXR1cmVBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Expenditure/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRXhwZW5kaXR1cmVcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Income/Views/Income/IncomeAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSW5jb21lXFZpZXdzXEluY29tZVxJbmNvbWVBZGRFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Income/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSW5jb21lXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Logbooks/Views/Logbooks/LogbookAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTG9nYm9va3NcVmlld3NcTG9nYm9va3NcTG9nYm9va0FkZEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Logbooks/Views/Logbooks/LogbooksList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTG9nYm9va3NcVmlld3NcTG9nYm9va3NcTG9nYm9va3NMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Logbooks/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTG9nYm9va3NcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Logs/Views/Logs/LogAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTG9nc1xWaWV3c1xMb2dzXExvZ0FkZEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Logs/Views/Logs/LogList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTG9nc1xWaWV3c1xMb2dzXExvZ0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Logs/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTG9nc1xWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Payments/Views/Payments/PaymentAddEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF5bWVudHNcVmlld3NcUGF5bWVudHNcUGF5bWVudEFkZEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/Payments/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUGF5bWVudHNcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/SEC_User/Views/SEC_User/EmojiSelect.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU0VDX1VzZXJcVmlld3NcU0VDX1VzZXJcRW1vamlTZWxlY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/SEC_User/Views/SEC_User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU0VDX1VzZXJcVmlld3NcU0VDX1VzZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/SEC_User/Views/SEC_User/SignUpPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU0VDX1VzZXJcVmlld3NcU0VDX1VzZXJcU2lnblVwUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/SEC_User/Views/SEC_User/ViewProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU0VDX1VzZXJcVmlld3NcU0VDX1VzZXJcVmlld1Byb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Areas/SEC_User/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU0VDX1VzZXJcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Views/Home/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Views/Home/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Views/Shared/_LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hardi/source/repos/Expense_Manager/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-u5fa4ha89d

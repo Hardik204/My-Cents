@@ -1,0 +1,75 @@
+﻿@using Expense_Manager.Areas.SEC_User.Models
+@{
+    ViewData["Title"] = "Login Page";
+}
+@model SEC_UserModel
+
+<meta name="author" content="AdminKit">
+<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="shortcut icon" href="~/AdminLayout/img/icons/icon-48x48.png" />
+
+<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
+
+<link href="~/AdminLayout/css/app.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<main class="d-flex w-100">
+	<div class="mb-2" style="position:relative;left:30px;top:30px">
+		<a class="btn btn-secondary" style="padding:10px" asp-controller="Home" asp-action="Index"><i class="align-middle" data-feather="home"></i></a>
+	</div>
+	<div class="container d-flex flex-column">
+		<div class="row vh-100">
+			<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+				<div class="d-table-cell align-middle">
+
+					<div class="text-center mt-4">
+						<h1 class="h2">Register Here !</h1>
+					</div>
+
+					<div class="card">
+						<div class="card-body">
+							<div class="m-sm-4">
+								<h4>@ViewData["Error"]</h4>
+								<form method="post" asp-area="SEC_User" asp-controller="SEC_User" asp-action="SignUp" id="SignUp" name="SignUp">
+									<div class="mb-3">
+										<label class="form-label">First Name</label>
+										<input asp-for="First_Name" class="form-control form-control-lg" type="text" name="First_NAme" placeholder="Enter your name" />
+									</div>
+									<div class="mb-3">
+										<label class="form-label">Last Name</label>
+										<input asp-for="Last_Name" class="form-control form-control-lg" type="text" name="Last_Name" placeholder="Enter your name" />
+									</div>
+									<div class="mb-3">
+										<label class="form-label">Username</label>
+										<input asp-for="Username" class="form-control form-control-lg" type="text" name="Username" placeholder="Enter your Username :" />
+									</div>
+									<div class="mb-3">
+										<label class="form-label">Password</label>
+										<input asp-for="Password" class="form-control form-control-lg" type="password" name="Password" placeholder="Enter password" />
+									</div>
+									<div class="mb-3">
+										<label class="form-label">Contact Number :</label>
+										<input asp-for="ContactNumber" class="form-control form-control-lg" type="number" name="ContactNumber" placeholder="Enter Mobile Number :" />
+									</div>
+									<div class="mb-3">
+										<label class="form-label">Email</label>
+										<input asp-for="Email" class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" />
+									</div>
+									<div class="text-center mt-3">
+										@*<a href="index.html" class="btn btn-lg btn-primary">Sign up</a>*@
+										<button type="submit" class="btn btn-lg btn-primary">Sign up</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<script src="~/AdminLayout/js/app.js"></script>

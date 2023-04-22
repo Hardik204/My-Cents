@@ -1,0 +1,56 @@
+﻿@using System.Data;
+@{
+	ViewData["Title"] = "Graphs";
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="col-12 col-lg-6">
+	<div class="card">
+		<div class="card-header">
+			<h5 class="card-title">Pie Chart</h5>
+			<h6 class="card-subtitle text-muted">Pie charts are excellent at showing the relational proportions between data.</h6>
+		</div>
+		<div class="card-body">
+			<div class="chart chart-sm">
+				<canvas id="chartjs-pie"></canvas>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var labels = [];
+</script>
+
+@foreach(DataRow dr in Model.Rows)
+{
+	
+}
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		// Pie chart
+		new Chart(document.getElementById("chartjs-pie"), {
+			type: "pie",
+			data: {
+				labels: ["Social", "Search Engines", "Direct", "Other"],
+				datasets: [{
+					data: [260, 125, 54, 146],
+					backgroundColor: [
+						window.theme.primary,
+						window.theme.warning,
+						window.theme.danger,
+						"#dee2e6"
+					],
+					borderColor: "transparent"
+				}]
+			},
+			options: {
+				maintainAspectRatio: false,
+				legend: {
+					display: false
+				}
+			}
+		});
+	});
+</script>
