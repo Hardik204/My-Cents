@@ -1,10 +1,18 @@
 ﻿@using System.Data;
+@using Expense_Manager.BAL;
 @{
-	ViewData["Title"] = "Graphs";
+	ViewData["Title"] = "Monthly Expenses";
 	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@model DataTable
 
-<div class="col-12 col-lg-6">
+<div class="mb-2">
+	<a class="btn btn-secondary" asp-area="Logs" asp-controller="Logs" asp-action="Index" asp-route-Logbook_Id="@Convert.ToInt32(CV.Logbook_Id())">
+		<i class="align-middle me-2" data-feather="chevron-left"></i>
+	</a>
+</div>
+
+<div class="col-12 col-lg-6" style="margin:auto;width:90%">
 	<div class="card">
 		<div class="card-header">
 			<h5 class="card-title">Pie Chart</h5>
@@ -20,11 +28,16 @@
 
 <script>
 	var labels = [];
+	var data = [];
+	var backgroundColor = ["#6050DC", "#D52DB7", "#FF2E7E", "#FF6B45", "#FFAB05", "#377B2B", "#7AC142", "#007CC3", "#003F5C", "#58508D"];
 </script>
 
 @foreach(DataRow dr in Model.Rows)
 {
-	
+	<script>
+		labels.push("@dr["Expenditure_Name"].ToString()");
+		data.push("@dr["Total"].ToString()");
+	</script>
 }
 
 <script>
@@ -33,15 +46,18 @@
 		new Chart(document.getElementById("chartjs-pie"), {
 			type: "pie",
 			data: {
-				labels: ["Social", "Search Engines", "Direct", "Other"],
+				/*labels: ["Social", "Search Engines", "Direct", "Other"],*/
+				labels,
 				datasets: [{
-					data: [260, 125, 54, 146],
-					backgroundColor: [
-						window.theme.primary,
-						window.theme.warning,
-						window.theme.danger,
-						"#dee2e6"
-					],
+					//data: [260, 125, 54, 146],
+					data,
+					//backgroundColor: [
+					//	window.theme.primary,
+					//	window.theme.warning,
+					//	window.theme.danger,
+					//	"#dee2e6"
+					//],
+					backgroundColor,
 					borderColor: "transparent"
 				}]
 			},

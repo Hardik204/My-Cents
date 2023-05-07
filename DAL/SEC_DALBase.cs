@@ -5,6 +5,7 @@ using Expense_Manager.Areas.SEC_User.Models;
 using System.Net.Mail;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Expense_Manager.BAL;
+using Expense_Manager.Areas.Logbooks.Models;
 
 namespace Expense_Manager.DAL
 {
@@ -57,11 +58,98 @@ namespace Expense_Manager.DAL
 				return null;
 			}
 		}
-		#endregion
+        #endregion
 
 
-		#region SelectAllAvatars
-		public DataTable PR_SelectAllAvatars(string conn)
+        #region SEC_UserSelectByPk
+		public SEC_UserModel PR_SEC_UserSelectByPk(string conn)
+		{
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(conn);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_SEC_UserSelectByPk");
+                sqlDB.AddInParameter(dbCMD, "User_Id", SqlDbType.Int, CV.User_Id());
+
+                DataTable dt = new DataTable();
+                using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
+                {
+                    dt.Load(dr);
+                }
+
+                SEC_UserModel modelSEC_User = new SEC_UserModel();
+                foreach (DataRow drow in dt.Rows)
+                {
+                    modelSEC_User.User_Id = Convert.ToInt32(drow["User_Id"]);
+                    modelSEC_User.First_Name = drow["First_Name"].ToString();
+                    modelSEC_User.Last_Name = drow["Last_Name"].ToString();
+                    modelSEC_User.Email = drow["Email"].ToString();
+                    modelSEC_User.ContactNumber = Convert.ToInt64(drow["ContactNumber"]);
+                    modelSEC_User.Username = drow["Username"].ToString();
+                    modelSEC_User.AvatarLocation = drow["Location"].ToString();
+                }
+                return modelSEC_User;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
+
+        #region SEC_UserSelectByPkdt
+        public DataTable PR_SEC_UserSelectByPkdt(string conn)
+        {
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(conn);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_SEC_UserSelectByPk");
+                sqlDB.AddInParameter(dbCMD, "User_Id", SqlDbType.Int, CV.User_Id());
+
+                DataTable dt = new DataTable();
+                using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
+                {
+                    dt.Load(dr);
+                }
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        #endregion
+
+
+
+        #region SEC_User_UpdateByPk
+        public int PR_SEC_User_UpdateByPk(string conn , SEC_UserModel modelSEC_User)
+		{
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(conn);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_SEC_User_UpdateByPk");
+                sqlDB.AddInParameter(dbCMD, "User_Id", SqlDbType.Int, CV.User_Id());
+                sqlDB.AddInParameter(dbCMD, "Username", SqlDbType.NVarChar, modelSEC_User.Username);
+                sqlDB.AddInParameter(dbCMD, "First_Name", SqlDbType.NVarChar, modelSEC_User.First_Name);
+                sqlDB.AddInParameter(dbCMD, "Last_Name", SqlDbType.NVarChar, modelSEC_User.Last_Name);
+                sqlDB.AddInParameter(dbCMD, "PhoneNumber", SqlDbType.BigInt, modelSEC_User.ContactNumber);
+                sqlDB.AddInParameter(dbCMD, "Email", SqlDbType.NVarChar, modelSEC_User.Email);
+
+                int status = sqlDB.ExecuteNonQuery(dbCMD);
+                return status;
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+        #endregion
+
+
+        #region SelectAllAvatars
+        public DataTable PR_SelectAllAvatars(string conn)
 		{
 			try
 			{

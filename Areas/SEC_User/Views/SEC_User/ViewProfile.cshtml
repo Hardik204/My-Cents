@@ -1,6 +1,101 @@
-﻿@using Expense_Manager.Areas.Logbooks.Models;
+﻿@using Expense_Manager.Areas.SEC_User.Models;
+@using Expense_Manager.BAL;
+@using System.Data
 @{
     ViewData["Title"] = "Logbook Form";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+@model DataTable;
+@*@model Expense_Manager.Areas.SEC_User.Models.SEC_UserModel*@
+
+<style>
+    .gradient-custom {
+/* fallback for old browsers */
+background: #f6d365;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+}
+</style>
+
+@foreach(DataRow dr in Model.Rows)
+{
+    <section class="vh-95" style="background-color: #f4f5f7;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-lg-6 mb-4 mb-lg-0">
+                    <div class="card mb-3" style="border-radius: .5rem;">
+                        <div class="row g-0">
+                            <div class="col-md-4 gradient-custom text-center text-white"
+                                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                                <img src="@Url.Content(CV.AvatarLocation())" alt="@CV.First_Name()" class="img-fluid my-5" style="width: 80px;" />
+                                <h5>@dr["First_Name"] @dr["Last_Name"]</h5>
+                                <p>@dr["Username"]</p>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body p-4">
+                                    <h6>Information</h6>
+                                    <hr class="mt-0 mb-4">
+                                    <div class="pt-1">
+                                        <div class="col-9 mb-3">
+                                            <h6>Email</h6>
+                                            <p class="text-muted">@dr["Email"]</p>
+                                        </div>
+                                        <div class="col-9 mb-3">
+                                            <h6>Phone</h6>
+                                            <p class="text-muted">@dr["ContactNumber"]</p>
+                                        </div>
+                                        <a class="btn btn-primary" asp-area="SEC_User" asp-controller="SEC_User" asp-action="Add">Update</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+
+
+@*<section class="vh-95" style="background-color: #f4f5f7;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-6 mb-4 mb-lg-0">
+                <div class="card mb-3" style="border-radius: .5rem;">
+                    <div class="row g-0">
+                        <div class="col-md-4 gradient-custom text-center text-white"
+                             style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                            <img src="@Url.Content(CV.AvatarLocation())" alt="@CV.First_Name()" class="img-fluid my-5" style="width: 80px;" />
+                            <h5>@Model.First_Name @Model.Last_Name</h5>
+                            <p>@Model.Username</p>
+                            <i class="far fa-edit mb-5"><a asp-area="SEC_User" asp-controller="SEC_User" asp-action="Add"></a></i>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body p-4">
+                                <h6>Information</h6>
+                                <hr class="mt-0 mb-4">
+                                <div class="pt-1">
+                                    <div class="col-6 mb-3">
+                                        <h6>Email</h6>
+                                        <p class="text-muted">@Model.Email</p>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6>Phone</h6>
+                                        <p class="text-muted">@Model.ContactNumber</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+*@

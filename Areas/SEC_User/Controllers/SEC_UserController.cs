@@ -1,4 +1,5 @@
-﻿using Expense_Manager.Areas.SEC_User.Models;
+﻿using Expense_Manager.Areas.Logbooks.Models;
+using Expense_Manager.Areas.SEC_User.Models;
 using Expense_Manager.DAL;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
@@ -140,10 +141,15 @@ namespace Expense_Manager.Areas.SEC_User.Controllers
 			return View("SignUpPage");
 		}
 
-		public IActionResult ViewProfile()
+        #region ViewProfile
+        public IActionResult ViewProfilePage()
 		{
-			return View();
+            string str = Configuration.GetConnectionString("myConnectionString");
+            SEC_DAL dalSEC = new SEC_DAL();
+            DataTable dt = dalSEC.PR_SEC_UserSelectByPkdt(str);
+            return View("ViewProfile",dt);
 		}
+        #endregion
 
         #region AvatarSelectAll
         public IActionResult AvatarSelect()
@@ -169,5 +175,31 @@ namespace Expense_Manager.Areas.SEC_User.Controllers
 			return RedirectToAction("AvatarSelect");
         }
         #endregion
+
+        #region Add
+		public IActionResult Add()
+		{
+            string str = Configuration.GetConnectionString("myConnectionString");
+            SEC_DAL dalSEC = new SEC_DAL();
+            SEC_UserModel modelSEC_User = dalSEC.PR_SEC_UserSelectByPk(str);
+            return View("SEC_UserAddEdit",modelSEC_User);
+        }
+        #endregion
+
+        #region Save
+		public IActionResult Save(SEC_UserModel modelSEC_User)
+		{
+            string str = Configuration.GetConnectionString("myConnectionString");
+            SEC_DAL dalSEC = new SEC_DAL();
+            if (Convert.ToBoolean(dalSEC.PR_SEC_User_UpdateByPk(str, modelSEC_User)))
+            {
+                HttpContext.Session.SetString("First_Name", modelSEC_User.First_Name);
+                HttpContext.Session.SetString("Username", modelSEC_User.Username);
+                ViewData["Msg"] = "Record Updated Successfully!";
+            }
+            return RedirectToAction("ViewProfilePage");
+        }
+        #endregion
+
     }
 }

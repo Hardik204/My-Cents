@@ -7,12 +7,14 @@
     <input class="btn btn-success" type="submit" value="Insert" />
 </form>
 
+<h1 class="text-center">My Logbooks</h1>
+
 <div style="padding-top:50px"></div>
 
-
+<div class="row justify-content-center">
 @foreach (DataRow dr in Model.Rows)
 {
-    <div class="card mb-5 mx-auto">
+    <div class="card col-3 mb-5 mx-auto">
         <div class="card-body">
 
             <div class="btn-group float-end">
@@ -33,3 +35,4 @@
         </div>
     </div>
 }
+</div>

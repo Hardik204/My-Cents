@@ -1,16 +1,25 @@
 ﻿@using System.Data;
+@using Expense_Manager.BAL;
 @{
     ViewData["Title"] = "Log Books";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<form class="float-end" asp-area="Logs" asp-controller="Logs" asp-action="Add">
+<form class="float-end" asp-area="Logs" asp-controller="Logs" asp-action="Add" asp-route-Logbook_Id="@CV.Logbook_Id()">
     <input class="btn btn-success" type="submit" value="Insert" />
 </form>
 
-<a class="btn btn-primary" asp-area="Analysis" asp-controller="Analysis" asp-route-Logbook_Id="@Convert.ToInt32(ViewData["Logbook_Id"].ToString())" asp-action="Index">Daily Expense</a>
-<a class="btn btn-primary" asp-area="Analysis" asp-controller="Analysis" asp-route-Logbook_Id="@Convert.ToInt32(ViewData["Logbook_Id"].ToString())" asp-action="MonthlyExpensePage">Monthly Expense</a>
-<a class="btn btn-primary" asp-area="Analysis" asp-controller="Analysis" asp-route-Logbook_Id="@Convert.ToInt32(ViewData["Logbook_Id"].ToString())" asp-action="YearlyExpensePage">Yearly Expense</a>
+<div class="mb-2">
+    <a class="btn btn-secondary" asp-area="Logbooks" asp-controller="Logbooks" asp-action="Index">
+        <i class="align-middle me-2" data-feather="chevron-left"></i>
+    </a>
+</div>
+
+<h1 class="text-center">My Logs</h1>
+
+<a class="btn btn-primary" asp-area="Analysis" asp-controller="Analysis" asp-route-Logbook_Id="@Convert.ToInt32(CV.Logbook_Id())" asp-action="Index">Daily Expense</a>
+<a class="btn btn-primary" asp-area="Analysis" asp-controller="Analysis" asp-route-Logbook_Id="@Convert.ToInt32(CV.Logbook_Id())" asp-action="MonthlyExpensePage">Monthly Expense</a>
+<a class="btn btn-primary" asp-area="Analysis" asp-controller="Analysis" asp-route-Logbook_Id="@Convert.ToInt32(CV.Logbook_Id())" asp-action="YearlyExpensePage">Yearly Expense</a>
 
 <section>
     <div style="padding-top:50px"></div>
@@ -31,7 +40,14 @@
 
                 <h5 class="card-title">@dr["Log_Name"]</h5>
                 <br>
-                <h5 class="card-title float-end"><b>Amount : </b>@dr["Amount"]</h5>
+                @if(Convert.ToInt64(dr["Amount"]) < 0)
+                {
+                    <h5 class="card-title float-end"><b>Amount : </b><span class="text-danger">@dr["Amount"]</span></h5>
+                }
+                else
+                {
+                    <h5 class="card-title float-end"><b>Amount : </b><span class="text-success">@dr["Amount"]</span></h5>
+                }
                 <p class="card-text"><b>Expense Date : </b>@Convert.ToDateTime(dr["Expense_Date"]).ToString("dd/MM/yyyy")</p>
                 <small>@dr["Description"]</small>
             </div>

@@ -57,6 +57,12 @@
 						</a>
 					</li>
 
+					<li class="sidebar-item">
+						<a class="sidebar-link" asp-area="Logbooks" asp-controller="Logbooks" asp-action="Index">
+							<i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">My Logbooks</span>
+						</a>
+					</li>
+
 				</ul>
 			</div>
 		</nav>
@@ -78,7 +84,7 @@
 								<img src="@Url.Content(CV.AvatarLocation())" class="avatar img-fluid rounded me-1" /><span class="text-dark">Hello ! @CV.First_Name()</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+								<a class="dropdown-item" asp-area="SEC_User" asp-controller="SEC_User" asp-action="ViewProfilePage"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
@@ -104,7 +110,7 @@
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> &copy;
+								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>MyCents</strong></a> &copy;
 							</p>
 						</div>
 						<div class="col-6 text-end">

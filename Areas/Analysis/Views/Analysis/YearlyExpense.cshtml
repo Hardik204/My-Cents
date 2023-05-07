@@ -1,10 +1,17 @@
 ﻿@using System.Data;
+@using Expense_Manager.BAL;
 @{
 	ViewData["Title"] = "Graphs";
 	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<div class="col-12 col-lg-6">
+<div class="mb-2">
+	<a class="btn btn-secondary" asp-area="Logs" asp-controller="Logs" asp-action="Index" asp-route-Logbook_Id="@CV.Logbook_Id()">
+		<i class="align-middle me-2" data-feather="chevron-left"></i>
+	</a>
+</div>
+
+<div class="col-12 col-lg-6 mx-auto">
 	<div class="card">
 		<div class="card-header">
 			<h5 class="card-title">Bar Chart</h5>
@@ -19,6 +26,23 @@
 </div>
 
 <script>
+	var gdata = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	var rdata = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	//var data = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+</script>
+
+@foreach(DataRow dr in Model.Rows)
+{
+	<script>
+		gdata[@Convert.ToInt32(dr["month"].ToString()) -1] = (@Math.Abs(Convert.ToInt32(dr["TotalIncome"].ToString())));
+		rdata[@Convert.ToInt32(dr["month"].ToString()) -1] = (@Math.Abs(Convert.ToInt32(dr["TotalExpense"].ToString())));
+	</script>
+}
+<script>
+	//console.log(data[0]);
+</script>
+
+<script>
 	document.addEventListener("DOMContentLoaded", function () {
 		// Bar chart
 		new Chart(document.getElementById("chartjs-bar"), {
@@ -26,21 +50,23 @@
 			data: {
 				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 				datasets: [{
-					label: "Last year",
-					backgroundColor: window.theme.primary,
-					borderColor: window.theme.primary,
-					hoverBackgroundColor: window.theme.primary,
-					hoverBorderColor: window.theme.primary,
-					data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+					label: "Income",
+					backgroundColor: window.theme.success,
+					borderColor: window.theme.success,
+					hoverBackgroundColor: window.theme.success,
+					hoverBorderColor: window.theme.success,
+					data: gdata,
+					//data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
 					barPercentage: .75,
 					categoryPercentage: .5
 				}, {
-					label: "This year",
-					backgroundColor: "#dee2e6",
-					borderColor: "#dee2e6",
-					hoverBackgroundColor: "#dee2e6",
-					hoverBorderColor: "#dee2e6",
-					data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
+					label: "Expenditure",
+					backgroundColor: window.theme.danger,
+					borderColor: window.theme.danger,
+					hoverBackgroundColor: window.theme.danger,
+					hoverBorderColor: window.theme.danger,
+					//data,
+					data: rdata, //[69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
 					barPercentage: .75,
 					categoryPercentage: .5
 				}]
@@ -48,16 +74,16 @@
 			options: {
 				maintainAspectRatio: false,
 				legend: {
-					display: false
+					display: true
 				},
 				scales: {
 					yAxes: [{
 						gridLines: {
-							display: false
+							display: true
 						},
 						stacked: false,
 						ticks: {
-							stepSize: 20
+							stepSize: 500
 						}
 					}],
 					xAxes: [{

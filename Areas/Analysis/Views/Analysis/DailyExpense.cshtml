@@ -1,4 +1,5 @@
 ﻿@using System.Data;
+@using Expense_Manager.BAL;
 @{
     ViewData["Title"] = "Daily Expense";
 	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -14,6 +15,11 @@
 		}
 	</style>
 
+<div class="mb-2">
+	<a class="btn btn-secondary" asp-area="Logs" asp-controller="Logs" asp-action="Index" asp-route-Logbook_Id="@CV.Logbook_Id()">
+		<i class="align-middle me-2" data-feather="chevron-left"></i>
+	</a>
+</div>
 
 <body class="antialiased sans-serif bg-gray-100">
 	<div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
@@ -163,7 +169,7 @@
 		String[] dateparts = dates.Split("-", 3, StringSplitOptions.RemoveEmptyEntries);
 		<script>
 			var event = {
-				event_date : new Date(@Convert.ToInt32(dateparts[2]),@Convert.ToInt32(dateparts[1])-1	,@Convert.ToInt32(dateparts[0])),
+				event_date : new Date(@Convert.ToInt32(dateparts[2]),@Convert.ToInt32(dateparts[1])-1,@Convert.ToInt32(dateparts[0])),
 				event_title : 'Expenses : @dr["Total_Expenses"].ToString()',
 				event_theme : 'red'
 			}

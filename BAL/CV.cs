@@ -52,5 +52,16 @@
             }
             return AvatarLocation;
         }
+
+        public static int? Logbook_Id()
+        {
+            int? Logbook_Id = null;
+
+            if (_httpContextAccessor.HttpContext.Session.GetString("Logbook_Id") != null)
+            {
+                Logbook_Id = Convert.ToInt32(_httpContextAccessor.HttpContext.Session.GetString("Logbook_Id"));
+            }
+            return Logbook_Id;
+        }
     }
 }

@@ -33,17 +33,7 @@ namespace Expense_Manager.Areas.Logs.Controllers
         {
             string str = Configuration.GetConnectionString("myConnectionString");
             Log_DAL dalLog = new Log_DAL();
-            ViewData["Logbook_Id"] = Logbook_Id;
-            if(Logbook_Id == null)
-            {
-                Logbook_Id = Convert.ToInt32(TempData["Logbook_Id"]);
-            }
-            else
-            {
-                TempData["Logbook_Id"] = Logbook_Id;
-                RedirectToAction("Save");
-                RedirectToAction("Delete");
-            }
+            HttpContext.Session.SetString("Logbook_Id", Logbook_Id.ToString());
             DataTable dt = dalLog.PR_LogsSelectAll(str, Logbook_Id);
             return View("LogList", dt);
         }
@@ -54,8 +44,11 @@ namespace Expense_Manager.Areas.Logs.Controllers
         {
             string str = Configuration.GetConnectionString("myConnectionString");
             Log_DAL dalLog = new Log_DAL();
+            LogsModel modelTemp = dalLog.PR_LogsSelectByPk(str, Log_Id);
+            modelTemp.Amount = modelTemp.Amount * (-1);
             dalLog.PR_LogsDeleteByPk(str, Log_Id);
-            return RedirectToAction("Index", new { Logbook_Id = Convert.ToInt32(TempData["Logbook_Id"])});
+            dalLog.PR_SetCurrentBalance(str , (int)CV.Logbook_Id() ,(Int64)modelTemp.Amount);
+            return RedirectToAction("Index", new { Logbook_Id = CV.Logbook_Id()});
         }
         #endregion
 
@@ -72,7 +65,7 @@ namespace Expense_Manager.Areas.Logs.Controllers
             foreach(DataRow dr in dt.Rows)
             {
                 SourceDropdown sd = new SourceDropdown();
-                sd.Source_id = Convert.ToInt32(dr["Source_id"]);
+                sd.Source_Id = Convert.ToInt32(dr["Source_Id"]);
                 sd.Source_Name = dr["Source_Name"].ToString();
                 list.Add(sd);
             }
@@ -109,7 +102,6 @@ namespace Expense_Manager.Areas.Logs.Controllers
             #region Record Select by Pk
             if (Log_Id != null)
             {
-                
                 Log_DAL dalLog = new Log_DAL();
                 LogsModel modelLog = dalLog.PR_LogsSelectByPk(str, (int)Log_Id);
                 return View("LogAddEdit", modelLog);
@@ -124,7 +116,7 @@ namespace Expense_Manager.Areas.Logs.Controllers
         [HttpPost]
         public IActionResult Save(LogsModel modelLog)
         {
-            modelLog.Logbook_Id = Convert.ToInt32(TempData["Logbook_Id"]);
+            modelLog.Logbook_Id = (int)CV.Logbook_Id();
             string str = Configuration.GetConnectionString("myConnectionString");
             Log_DAL dalLog = new Log_DAL();
             if (modelLog.Log_Id == null)
@@ -137,15 +129,15 @@ namespace Expense_Manager.Areas.Logs.Controllers
             }
             else
             {
+                LogsModel tempModel = dalLog.PR_LogsSelectByPk(str, (int)modelLog.Log_Id);
                 if (Convert.ToBoolean(dalLog.PR_LogsUpdateByPk(str, modelLog)))
                 {
-                    LogsModel tempModel = dalLog.PR_LogsSelectByPk(str, (int)modelLog.Log_Id);
                     dalLog.PR_UpdateCurrentBalance(str, modelLog.Logbook_Id, tempModel.Amount, modelLog.Amount);
                     ViewData["Msg"] = "Record Updated Successfully!";
                 }
 
             }
-            return RedirectToAction("Index",new { Logbook_Id = Convert.ToInt32(TempData["Logbook_Id"])});
+            return RedirectToAction("Index",new { Logbook_Id = CV.Logbook_Id()});
         }
         #endregion
     }

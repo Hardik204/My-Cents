@@ -4,11 +4,18 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 @using System.Data;
+@using Expense_Manager.BAL;
 @model LogsModel
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<section class="section">
+<div class="mb-2">
+    <a class="btn btn-secondary" asp-area="Logs" asp-controller="Logs" asp-action="Index" asp-route-Logbook_Id="@Convert.ToInt32(CV.Logbook_Id())">
+        <i class="align-middle me-2" data-feather="chevron-left"></i>
+    </a>
+</div>
+
+<section class="section col-7" style="margin:auto">
     <div class="row">
             <div class="card">
                 <div class="card-body">
@@ -35,13 +42,13 @@
         <legend class="col-form-label col-sm-2 pt-0">Select Log Type:</legend>
             <div class="col-sm-10 asp" asp-for="Log_Type" id="Log_Type">
                 <div class="form-check">
-                    <input class="form-check-input fuddu" asp-for="Log_Type" type="radio" id="Log_Type" name="Log_Type" value="Expenditure" checked>
+                    <input class="form-check-input fuddu" asp-for="Log_Type" type="radio" id="Log_Type" name="Log_Type" onclick="selecteddropdown1()" value="Expenditure">
                     <label class="form-check-label" for="gridRadios1">
                         Expenditure
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input fuddu" asp-for="Log_Type" type="radio" name="Log_Type" id="Log_Type" value="Income">
+                    <input class="form-check-input fuddu" asp-for="Log_Type" type="radio" name="Log_Type" id="Log_Type" onclick="selecteddropdown2()" value="Income">
                     <label class="form-check-label" for="gridRadios2">
                         Income
                     </label>
@@ -61,7 +68,7 @@
     <div class="row mb-3" id="dropdown2">
         <label for="Log_TypeData" class="col-sm-2 col-form-label">Select Type :</label>
         <div class="col-sm-10">
-            <select class="form-control" asp-for="Log_TypeData" asp-items="@(new SelectList(ViewBag.SourceData,"Source_id","Source_Name")).ToList()">
+            <select class="form-control" asp-for="Log_TypeData" asp-items="@(new SelectList(ViewBag.SourceData,"Source_Id","Source_Name")).ToList()">
                 <option value="">Select</option>
             </select>
         </div>
@@ -81,17 +88,13 @@
         </div>
     </div>
 
-    <div class="row mb-3">
+    <div class="row mb-3 text-center">
         <div class="col-sm-10">
             <input type="submit" class="btn btn-primary"></input>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <div class="col-sm-10">
             <a class="btn btn-danger" asp-area="Logs" asp-controller="Logs" asp-action="Index" value="Cancel" class="btn btn-danger">Cancel</a>
         </div>
     </div>
+
 </form>
                
             </div>
@@ -100,10 +103,41 @@
 </section>
 
 <script>
-    const radioButtons = document.getElementsByClassName('fuddu');
-    const dropdown1 = document.getElementById('dropdown1');
-    const dropdown2 = document.getElementById('dropdown2');
 
+    document.getElementById("dropdown1").style.display = "none";
+    document.getElementById("dropdown2").style.display = "none";
+
+    function selecteddropdown1()
+    {
+        document.getElementById("dropdown1").style.display = "block";
+        document.getElementById("dropdown2").style.display = "none";
+    }
+
+    function selecteddropdown2()
+    {
+        document.getElementById("dropdown1").style.display = "none";
+        document.getElementById("dropdown2").style.display = "block";
+    }
+
+    //function allow()
+    //{
+    //    var radioButtons = document.getElementsByClassName('fuddu');
+    //    var dropdown1 = document.getElementById('dropdown1');
+    //    var dropdown2 = document.getElementById('dropdown2');
+
+    //    radioButtons.forEach(function (radioButton) {
+    //        radioButton.addEventListener('change', function () {
+    //            if (radioButton.value == 'Expenditure' && radioButton.checked) {
+    //                dropdown1.style.display = 'block';
+    //                dropdown2.style.display = 'hidden';
+    //            } else if (radioButton.value == 'Income') {
+    //                dropdown1.style.display = 'block';
+    //                dropdown2.style.display = 'hidden';
+    //            }
+    //        });
+    //    });
+    //}
+    
     //if(radioButtons[0].checked){
     //    dropdown1.style.display = "block";
     //    dropdown2.style.display = "none";
@@ -113,17 +147,7 @@
     //    dropdown1.style.display = "none";
     //}
 
-    radioButtons.forEach(function (radioButton) {
-        radioButton.addEventListener('change', function () {
-            if (radioButton.value == 'Expenditure' && radioButton.checked) {
-                dropdown1.style.display = 'block';
-                dropdown2.style.display = 'none';
-            } else if (radioButton.value == 'Income' && radioButton.checked) {
-                dropdown1.style.display = 'none';
-                dropdown2.style.display = 'block';
-            }
-        });
-    });
+    
 
     //$(document).ready(function () {
     //    if ($('input[type=radio][name=Log_Type]:checked').val() == 'Expenditure') {

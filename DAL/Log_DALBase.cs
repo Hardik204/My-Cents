@@ -254,25 +254,32 @@ namespace Expense_Manager.DAL
         #region PR_LogsUpdateByPk
         public int PR_LogsUpdateByPk(string conn, LogsModel modelLog)
         {
-            SqlDatabase sqlDB = new SqlDatabase(conn);
-            DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_LogsUpdatebyPk");
-            sqlDB.AddInParameter(dbCMD, "Log_Id", SqlDbType.Int, modelLog.Log_Id);
-            sqlDB.AddInParameter(dbCMD, "Log_Name", SqlDbType.NVarChar, modelLog.Log_Name);
-            sqlDB.AddInParameter(dbCMD, "Log_Type", SqlDbType.NVarChar, modelLog.Log_Type);
-            sqlDB.AddInParameter(dbCMD, "Log_TypeData", SqlDbType.NVarChar, modelLog.Log_TypeData);
-            sqlDB.AddInParameter(dbCMD, "Amount", SqlDbType.BigInt, modelLog.Amount);
-            sqlDB.AddInParameter(dbCMD, "Expense_Date", SqlDbType.Date, modelLog.Expense_Date);
-            sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelLog.Description);
+            try
+            {
+                SqlDatabase sqlDB = new SqlDatabase(conn);
+                DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_LogsUpdatebyPk");
+                sqlDB.AddInParameter(dbCMD, "Log_Id", SqlDbType.Int, modelLog.Log_Id);
+                sqlDB.AddInParameter(dbCMD, "Log_Name", SqlDbType.NVarChar, modelLog.Log_Name);
+                sqlDB.AddInParameter(dbCMD, "Log_Type", SqlDbType.NVarChar, modelLog.Log_Type);
+                sqlDB.AddInParameter(dbCMD, "Log_TypeData", SqlDbType.NVarChar, modelLog.Log_TypeData);
+                sqlDB.AddInParameter(dbCMD, "Amount", SqlDbType.BigInt, modelLog.Amount);
+                sqlDB.AddInParameter(dbCMD, "Expense_Date", SqlDbType.Date, modelLog.Expense_Date);
+                sqlDB.AddInParameter(dbCMD, "Description", SqlDbType.NVarChar, modelLog.Description);
 
-            int status = sqlDB.ExecuteNonQuery(dbCMD);
-            return status;
+                int status = sqlDB.ExecuteNonQuery(dbCMD);
+                return status;
+            }
+            catch (Exception ex) 
+            {
+                return -1;
+            }
 
         }
         #endregion
 
 
         #region PR_SetCurrentBalance
-        public int PR_SetCurrentBalance(string conn,int Logbook_Id ,Int64 Amount )
+        public int PR_SetCurrentBalance(string conn,int Logbook_Id ,Int64 Amount)
         {
             try
             {

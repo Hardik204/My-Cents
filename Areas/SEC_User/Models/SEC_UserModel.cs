@@ -16,6 +16,8 @@
 
         public string Password { get; set;}
 
+        public int? Photo_Id { get; set; }
+
         public string? AvatarLocation { get; set;}
 
     }
